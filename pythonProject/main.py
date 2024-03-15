@@ -6,7 +6,7 @@ import streamlit as st
 import plotly.express as px
 import mysql.connector
 import random
-connection=mysql.connector.connect(host="mysql-48983cc-nazarenko-32e6.a.aivencloud.com",port=17657, user="avnadmin", password="AVNS_Dal6Z8qW-7uIbLWO5ze", ssl_ca="ca.pem", ssl_cert="ca.pem", ssl_key="ca.pem")
+connection=mysql.connector.connect(host="mysql-48983cc-nazarenko-32e6.a.aivencloud.com",port=17657, user="avnadmin", password="AVNS_Dal6Z8qW-7uIbLWO5ze", ssl_ca="ca.pem")
 
 copilot="Here the result from Copilot will be displayed"
 chatGPT="Here the result from ChatGpt will be displayed"
