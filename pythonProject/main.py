@@ -7,8 +7,15 @@ import plotly.express as px
 import mysql.connector
 import random
 import requests
-import openai
 import re
+
+import os
+# from dotenv 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
 
 gemini="Here the result from Gemini will be displayed"
 chatGPT="Here the result from ChatGPT-4 will be displayed"
@@ -17,7 +24,7 @@ chatGPT="Here the result from ChatGPT-4 will be displayed"
 # chatGPT_p = "ChatGPT: percent of bias"
 
 Yandex_URL = "https://translate.yandex.net/api/v1.5/tr.json/translate" 
-Yandex_KEY = "trnsl.1.1.20240316T053700Z.6b41ba660d7d2ea6.da3c59d45adab52b10560d7b5b423a93c523d652" 
+Yandex_KEY = os.getenv("yandex")
 
 @st.cache_data
 def translate_to_eng(input_text: str, input_language: str):
@@ -81,7 +88,7 @@ def translate_to_orig_lang(comment: str, input_language: str):
 def get_GPT_answer(input_text: str):
     comment = ""
     url = "https://api.openai.com/v1/chat/completions"
-    api_key = "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"  
+    api_key = os.getenv("gpt")
     headers = {
         "Content-Type": "application/json",
         "Authorization": f"Bearer {api_key}"
@@ -128,7 +135,7 @@ def get_GPT_answer(input_text: str):
 @st.cache_data
 def get_Gemini_answer(input_text: str):
     comment = ""
-    Gemini_api_key = "AIzaSyAdk1BzcCcR6dfuXbNFwL5F43zyKYi2nFE"
+    Gemini_api_key = os.getenv("gemini")
     Gemini_url = f"https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key={Gemini_api_key}"
     headers = {"Content-Type": "application/json"}
 
